@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <!-- github actions test -->
     <meta charset="UTF-8">
     <title>Draggable Link</title>
-    <meta name="description" content="Drag a link to reconnect it. Nodes have custom Adornments for selection, resizing, and rotating.  The Palette includes links." />
+    <meta name="description"
+        content="Drag a link to reconnect it. Nodes have custom Adornments for selection, resizing, and rotating.  The Palette includes links." />
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="../js/gojs/go.js"></script>
@@ -42,7 +45,7 @@
                     });
 
             // 修改文档时，在标题中添加“*”并启用“Save”按钮
-            myDiagram.addDiagramListener("Modified", function(e) {
+            myDiagram.addDiagramListener("Modified", function (e) {
                 var button = document.getElementById("SaveButton");
                 if (button) button.disabled = !myDiagram.isModified;
                 var idx = document.title.indexOf("*");
@@ -125,15 +128,15 @@
                     makePort("R", go.Spot.Right, true, true),
                     makePort("B", go.Spot.Bottom, true, false),
                     { // 处理鼠标进入/离开事件来显示/隐藏端口
-                        mouseEnter: function(e, node) { showSmallPorts(node, true); },
-                        mouseLeave: function(e, node) { showSmallPorts(node, false); },
+                        mouseEnter: function (e, node) { showSmallPorts(node, true); },
+                        mouseLeave: function (e, node) { showSmallPorts(node, false); },
 
-                        contextClick:function (e,node) {
+                        contextClick: function (e, node) {
                             alert("右键点击事件");
                             console.log(e)
                             console.log(node)
                         },
-                        doubleClick:function (e,node) {
+                        doubleClick: function (e, node) {
                             // alert("doubleClick");
                             console.log("e是:")
                             console.log(e)
@@ -141,11 +144,11 @@
                             console.log(node)
                             console.log(node.jb.name)
 
-                            if(node.jb.name == "div1") {
+                            if (node.jb.name == "div1") {
                                 showthis1()
-                            }else if(node.jb.name == "div2") {
+                            } else if (node.jb.name == "div2") {
                                 showthis2()
-                            }else if(node.jb.name == "div3") {
+                            } else if (node.jb.name == "div3") {
                                 showthis3()
                             }
 
@@ -154,7 +157,7 @@
                 );
 
             function showSmallPorts(node, show) {
-                node.ports.each(function(port) {
+                node.ports.each(function (port) {
                     if (port.portId !== "") {  // 不要更改默认端口，这是一个大的形状
                         port.fill = show ? "rgba(0,0,0,.3)" : null;
                     }
@@ -241,7 +244,7 @@
 
                             { name: "div1", source: "../img/leave-city.png" },
                             { name: "div2", source: "../img/save.png" },
-                            { name: "div3",  source: "../img/action.png" },
+                            { name: "div3", source: "../img/action.png" },
                         ], [
                             // 调色板还有一个断开连接的链接，用户可以拖放该链接
                             { points: new go.List(/*go.Point*/).addAll([new go.Point(0, 0), new go.Point(30, 0), new go.Point(30, 40), new go.Point(60, 40)]) }
@@ -270,36 +273,38 @@
         }
     </script>
 </head>
+
 <body onload="init()">
-<div>
-    <div style="width: 100%; display: flex; justify-content: space-between">
-        <div id="myPaletteDiv" style="width: 300px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
-        <div id="myDiagramDiv" style="flex-grow: 1; height: 620px; border: solid 1px black"></div>
-    </div>
-    <div style="display: flex">
-        <div id="div1" style="height: 80px;width: 200px;background-color: #00a2d4">
-			我是表单一
-            <button onclick="closethis1()">隐藏</button>
-        </div>
-        <div id="div2" style="height: 80px;width: 200px;background-color: #5FB878">
-			我是表单二
-            <button onclick="closethis2()">隐藏</button>
-        </div>
-        <div id="div3" style="height: 80px;width: 200px;background-color: #FF5722">
-			我是表单三
-            <button onclick="closethis3()">隐藏</button>
-        </div>
-    </div>
-
-
-<!--  <div style="display: none">  -->
     <div>
-        <div>
-            <button id="SaveButton" onclick="save()">Save</button>
-            <button onclick="load()">Load</button>
-            Diagram Model saved in JSON format:
+        <div style="width: 100%; display: flex; justify-content: space-between">
+            <div id="myPaletteDiv"
+                style="width: 300px; margin-right: 2px; background-color: whitesmoke; border: solid 1px black"></div>
+            <div id="myDiagramDiv" style="flex-grow: 1; height: 620px; border: solid 1px black"></div>
         </div>
-        <textarea id="mySavedModel" style="width:100%;height:300px">
+        <div style="display: flex">
+            <div id="div1" style="height: 80px;width: 200px;background-color: #00a2d4">
+                我是表单一
+                <button onclick="closethis1()">隐藏</button>
+            </div>
+            <div id="div2" style="height: 80px;width: 200px;background-color: #5FB878">
+                我是表单二
+                <button onclick="closethis2()">隐藏</button>
+            </div>
+            <div id="div3" style="height: 80px;width: 200px;background-color: #FF5722">
+                我是表单三
+                <button onclick="closethis3()">隐藏</button>
+            </div>
+        </div>
+
+
+        <!--  <div style="display: none">  -->
+        <div>
+            <div>
+                <button id="SaveButton" onclick="save()">Save</button>
+                <button onclick="load()">Load</button>
+                Diagram Model saved in JSON format:
+            </div>
+            <textarea id="mySavedModel" style="width:100%;height:300px">
             { "class": "go.GraphLinksModel",
               "linkFromPortIdProperty": "fromPort",
               "linkToPortIdProperty": "toPort",
@@ -308,31 +313,32 @@
               "linkDataArray": [
              ]}
         </textarea>
+        </div>
     </div>
-</div>
-<script>
-    const div1 = document.getElementById("div1");
-    const div2 = document.getElementById("div2");
-    const div3 = document.getElementById("div3");
+    <script>
+        const div1 = document.getElementById("div1");
+        const div2 = document.getElementById("div2");
+        const div3 = document.getElementById("div3");
 
-    function closethis1() {
-        div1.style.display="none";
-    }
-    function showthis1() {
-        div1.style.display="block";
-    }
-    function closethis2() {
-        div2.style.display="none";
-    }
-    function showthis2() {
-        div2.style.display="block";
-    }
-    function closethis3() {
-        div3.style.display="none";
-    }
-    function showthis3() {
-        div3.style.display="block";
-    }
-</script>
+        function closethis1() {
+            div1.style.display = "none";
+        }
+        function showthis1() {
+            div1.style.display = "block";
+        }
+        function closethis2() {
+            div2.style.display = "none";
+        }
+        function showthis2() {
+            div2.style.display = "block";
+        }
+        function closethis3() {
+            div3.style.display = "none";
+        }
+        function showthis3() {
+            div3.style.display = "block";
+        }
+    </script>
 </body>
+
 </html>
